@@ -107,6 +107,7 @@ const GameState = (props) => {
         ties,
         screen,
         activeUser,
+        playMode,
         handleStart,
         setActiveUser,
         setPlayMode,

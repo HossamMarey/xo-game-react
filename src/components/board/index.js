@@ -13,7 +13,18 @@ const Board = () => {
     setModalMode("start");
   };
 
-  const { squares, winner, winnerLine, xnext, ties } = useContext(GameContext);
+  const { squares, winner, winnerLine, xnext, ties, activeUser, playMode } =
+    useContext(GameContext);
+
+  const checkUser = (user) => {
+    if (playMode === "cpu") {
+      if (user === activeUser) {
+        return "(you)";
+      } else {
+        return "(cpu)";
+      }
+    }
+  };
 
   return (
     <div className="board">
@@ -62,7 +73,7 @@ const Board = () => {
       </div>
       <div className="board__footer">
         <div className="card bg-blue">
-          <p className="text-light">x (you)</p>
+          <p className="text-light">x {checkUser("x")}</p>
           <strong className="text-2xl"> {ties.x} </strong>
         </div>
         <div className="card bg-light">
@@ -70,7 +81,7 @@ const Board = () => {
           <strong className="text-2xl"> {ties.x + ties.o} </strong>
         </div>
         <div className="card bg-yellow">
-          <p className="text-light">o (cpu)</p>
+          <p className="text-light">o {checkUser("o")}</p>
           <strong className="text-2xl"> {ties.o}</strong>
         </div>
       </div>

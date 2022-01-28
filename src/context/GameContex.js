@@ -1,5 +1,4 @@
-import { createContext, useEffect, useState } from "react";
-import { useContext } from "react/cjs/react.development";
+import { createContext, useEffect, useState, useContext } from "react";
 import calcBestMove, { calcWinner } from "../helpers/calcSquares";
 import { ModalContext } from "./ModalContext";
 

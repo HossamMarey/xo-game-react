@@ -1,5 +1,4 @@
-import React from "react";
-import { useContext } from "react/cjs/react.development";
+import React, { useContext } from "react";
 import { GameContext } from "../../context/GameContex";
 import Oicon from "../icons/Oicon";
 import Xicon from "../icons/Xicon";

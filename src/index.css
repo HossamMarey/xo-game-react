@@ -1,13 +1,334 @@
-body {
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --color-bg-dark: #192a33;
+  --color-bg-light: #1f3640;
+  --color-gray: #a8bec9;
+  --color-gray-dark: #7a8991;
+  --color-yellow: #f2b238;
+  --color-yellow-dark: #cd8d16;
+  --color-blue: #30c4be;
+  --color-blue-dark: #128c89;
+
+  --shadow-y: 6px;
+}
+
+html {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+body {
+  background-color: var(--color-bg-dark);
+  color: var(--color-gray);
+}
+
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  min-height: 100vh;
+}
+.container {
+  max-width: 450px;
+  width: 100%;
+  margin-inline: auto;
+  padding: 2rem 1rem;
+}
+
+/* utilites  */
+.card {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  border-radius: 15px;
+  background-color: var(--color-bg-light);
+  text-align: center;
+}
+
+.bg-light {
+  background-color: var(--color-gray);
+  color: var(--color-bg-dark);
+}
+.bg-yellow {
+  background-color: var(--color-yellow);
+  color: var(--color-bg-dark);
+}
+.bg-blue {
+  background-color: var(--color-blue);
+  color: var(--color-bg-dark);
+}
+
+.text {
+  font-size: 1rem;
+}
+.text-lg {
+  font-size: 1.25rem;
+}
+.text-2xl {
+  font-size: 1.725rem;
+}
+.text-light {
+  color: var(--color-gray-dark);
+}
+.text-blue {
+  color: var(--color-blue);
+}
+.text-yellow {
+  color: var(--color-yellow);
+}
+
+.bg-blue.text-light,
+.bg-blue .text-light,
+.bg-yellow.text-light,
+.bg-yellow .text-light,
+.bg-light.text-light,
+.bg-light .text-light {
+  color: var(--color-bg-light);
+}
+
+.btn {
+  background-color: var(--color-gray);
+  border: none;
+  font-size: 1.125rem;
+  font-weight: bold;
+  padding: 12px 25px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 var(--shadow-y) 0 var(--color-gray-dark);
+  margin-bottom: 8px;
+  display: inline-block;
+  color: var(--color-bg-light);
+}
+.btn:hover {
+  --shadow-y: 8px;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(2px);
+  --shadow-y: 4px;
+}
+.btn-sm {
+  --shadow-y: 4px;
+}
+.btn-sm:hover {
+  --shadow-y: 6px;
+}
+.btn-sm:active {
+  --shadow-y: 3px;
+}
+
+.btn-yellow {
+  background-color: var(--color-yellow);
+  box-shadow: 0 var(--shadow-y) 0 var(--color-yellow-dark);
+}
+
+.btn-blue {
+  background-color: var(--color-blue);
+  box-shadow: 0 var(--shadow-y) 0 var(--color-blue-dark);
+}
+
+.shadow-gray {
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.2);
+}
+.shadow-blue {
+  box-shadow: 0 8px 0 var(--color-blue-dark);
+}
+.shadow-yellow {
+  box-shadow: 0 8px 0 var(--color-yellow-dark);
+}
+
+/* xo icons  */
+.icon {
+  display: inline-block;
+}
+.icon svg {
+  fill: var(--color-gray);
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+}
+.icon-sm svg {
+  width: 30px;
+  height: 30px;
+}
+.icon-lg svg {
+  width: 65px;
+  height: 65px;
+}
+.icon-yellow svg {
+  fill: var(--color-yellow);
+}
+.icon-blue svg {
+  fill: var(--color-blue);
+}
+.icon-dark svg {
+  fill: var(--color-bg-dark);
+}
+
+/* start  */
+.start {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.start__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.start__players {
+  width: 100%;
+  background-color: var(--color-bg-dark);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
+}
+.start__players span {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.start__players--active {
+  background-color: var(--color-gray);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+.start__btns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+/* board  */
+.board {
+}
+.board__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.board__turn {
+  border-radius: 5px;
+  background-color: var(--color-bg-light);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.board__restart svg {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+  transition: all 0.3s;
+}
+
+.board__restart:active svg {
+  transform: rotate(180deg);
+}
+
+.board__body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px 20px;
+}
+.board__body .card {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding-inline: 10px;
+}
+
+.board__body .active.shadow-blue {
+  background-color: var(--color-blue);
+}
+
+.board__body .active.shadow-yellow {
+  background-color: var(--color-yellow);
+}
+
+.board__footer {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.board__footer .card {
+  gap: 15px;
+}
+
+/* modal  */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+}
+.modal.closed {
+  display: none;
+}
+.modal__content {
+  width: 100%;
+  background-color: var(--color-bg-light);
+}
+
+/* score */
+.score {
+  text-align: center;
+}
+.score__title {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 30px 0;
+  justify-content: center;
+}
+
+.score__btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+/* restart  */
+.restart {
+  text-align: center;
+}
+.restart__title {
+  font-size: 2rem;
+
+  margin-bottom: 30px;
+}
+
+.restart__btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
 }
